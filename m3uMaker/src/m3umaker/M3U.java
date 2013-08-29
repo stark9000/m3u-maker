@@ -27,7 +27,7 @@ public class M3U extends javax.swing.JFrame {
     private boolean autoName = true;
     private boolean m3urp = true;
     private boolean m3usd = true;
-    private boolean m3ufp = true;
+    private boolean m3ufp = false;
     private boolean fMix = false;
     private final String junk = "m3u";
     private String Fname = "";
@@ -200,6 +200,11 @@ public class M3U extends javax.swing.JFrame {
         });
 
         jCheckBox6.setText("Append full Path");
+        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -480,6 +485,14 @@ public class M3U extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        if (jCheckBox6.isSelected()) {
+            m3ufp = true;
+        } else {
+            m3ufp = false;
+        }
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -590,7 +603,7 @@ public class M3U extends javax.swing.JFrame {
                     out.write(m3ufps + item);
                     out.newLine();
                 }
-            } else {
+            } else if (m3ufp == false) {
                 for (String item : textFiles(jfdir.getSelectedFile().toString())) {
                     out.write(item);
                     out.newLine();
