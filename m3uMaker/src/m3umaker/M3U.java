@@ -5,12 +5,14 @@
  */
 package m3umaker;
 
+import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -19,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author xyBerWise
  */
 public class M3U extends javax.swing.JFrame {
-
+    
     private JFileChooser jfdir;
     private JFileChooser _jfdir;
     private String dirp;
@@ -38,7 +40,7 @@ public class M3U extends javax.swing.JFrame {
      * Creates new form M3U
      */
     public M3U() {
-
+        
         initComponents();
         Cinit();
     }
@@ -90,13 +92,15 @@ public class M3U extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1.png"))); // NOI18N
         jButton1.setText("Select");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 71, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 110, -1));
 
         jLabel1.setText("Directory :");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
@@ -132,13 +136,15 @@ public class M3U extends javax.swing.JFrame {
         });
         jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/4.png"))); // NOI18N
         jButton2.setText("Make M3U");
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 110, -1));
 
         jTextField1.setToolTipText("");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 260, -1));
@@ -154,15 +160,17 @@ public class M3U extends javax.swing.JFrame {
         jTextField2.setEnabled(false);
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 260, -1));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/3.png"))); // NOI18N
         jButton3.setText("Settings");
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 110, -1));
 
-        jTabbedPane1.addTab("M3U", jPanel1);
+        jTabbedPane1.addTab("M3U", new javax.swing.ImageIcon(getClass().getResource("/img/4.png")), jPanel1); // NOI18N
 
         jCheckBox3.setText("Replace m3u file(s) with same name");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +186,9 @@ public class M3U extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/5.png"))); // NOI18N
         jButton4.setText("Apply");
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -192,7 +202,9 @@ public class M3U extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/2.png"))); // NOI18N
         jButton5.setText("select");
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -217,17 +229,14 @@ public class M3U extends javax.swing.JFrame {
                         .addComponent(jCheckBox6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox3))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jCheckBox4)
+                    .addComponent(jCheckBox3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jCheckBox5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -240,12 +249,11 @@ public class M3U extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox5)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5)))
+                    .addComponent(jButton5)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jButton4)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -254,11 +262,13 @@ public class M3U extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("Settings", jPanel2);
+        jTabbedPane1.addTab("Settings", new javax.swing.ImageIcon(getClass().getResource("/img/3.png")), jPanel2); // NOI18N
 
         jLabel3.setText("Made by Saliya Ruchiranga , aka | stark9000");
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/7.png"))); // NOI18N
         jButton6.setText("ok");
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -272,7 +282,7 @@ public class M3U extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton6)
@@ -283,12 +293,12 @@ public class M3U extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("About", jPanel3);
+        jTabbedPane1.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/img/6.png")), jPanel3); // NOI18N
 
         jMenu1.setText("File");
 
@@ -330,10 +340,10 @@ public class M3U extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1)
                     .addComponent(jSeparator1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +355,7 @@ public class M3U extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(466, 258));
+        setSize(new java.awt.Dimension(508, 258));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -358,24 +368,24 @@ public class M3U extends javax.swing.JFrame {
             jTextField1.setToolTipText("" + jTextField1.getText());
         } else {
         }
-
+        
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
     }//GEN-LAST:event_jCheckBox2ActionPerformed
-
+    
     private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
     }//GEN-LAST:event_jComboBox1PropertyChange
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        
         if (jCheckBox2.isSelected()) {
             Only();
         } else if (jCheckBox1.isSelected()) {
             Mix();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (jCheckBox1.isSelected()) {
             jCheckBox2.setEnabled(false);
@@ -387,7 +397,7 @@ public class M3U extends javax.swing.JFrame {
             fMix = false;
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
-
+    
     private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
         jCheckBox2.setEnabled(true);
         jCheckBox2.setSelected(true);
@@ -396,7 +406,7 @@ public class M3U extends javax.swing.JFrame {
             jComboBox1.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox2MouseClicked
-
+    
     private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
         jCheckBox1.setEnabled(true);
         jCheckBox1.setSelected(true);
@@ -405,11 +415,11 @@ public class M3U extends javax.swing.JFrame {
             jComboBox1.setEnabled(false);
         }
     }//GEN-LAST:event_jCheckBox1MouseClicked
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         if (jCheckBox3.isSelected()) {
             m3urp = true;
@@ -417,7 +427,7 @@ public class M3U extends javax.swing.JFrame {
             m3urp = false;
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
-
+    
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         if (jCheckBox4.isSelected()) {
             autoName = true;
@@ -427,14 +437,14 @@ public class M3U extends javax.swing.JFrame {
             jTextField2.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (autoName == false) {
             jTextField2.setEnabled(true);
         }
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
         if (jCheckBox5.isSelected()) {
             jTextField3.setEnabled(false);
@@ -452,9 +462,9 @@ public class M3U extends javax.swing.JFrame {
             m3ufp = true;
         }
     }//GEN-LAST:event_jCheckBox5ActionPerformed
-
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+        
         if (_jfdir.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             if (_jfdir.getSelectedFile() != null) {
                 _dirp = _jfdir.getSelectedFile().getAbsolutePath();
@@ -464,7 +474,7 @@ public class M3U extends javax.swing.JFrame {
         } else {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if (jCheckBox2.isSelected()) {
             Only();
@@ -472,19 +482,19 @@ public class M3U extends javax.swing.JFrame {
             Mix();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
         if (jCheckBox6.isSelected()) {
             m3ufp = true;
@@ -575,8 +585,10 @@ public class M3U extends javax.swing.JFrame {
         jTextField3.setEnabled(false);
         jButton5.setEnabled(false);
         jCheckBox6.setEnabled(false);
+        ImageIcon icon = new ImageIcon(this.getClass().getResource("/img/0.png"));
+        this.setIconImage(icon.getImage());
     }
-
+    
     private void Only() {
         if (m3usd == true) {
             dirdy = dirp + "\\";
@@ -585,7 +597,7 @@ public class M3U extends javax.swing.JFrame {
             return;
         } else {
             dirdy = _dirp + "\\";
-
+            
         }
         if (autoName == true) {
             Fname = uniqFname();
@@ -614,7 +626,7 @@ public class M3U extends javax.swing.JFrame {
         } catch (IOException e) {
         }
     }
-
+    
     private void Mix() {
         if (m3usd == true) {
             dirdy = dirp + "\\";
@@ -623,7 +635,7 @@ public class M3U extends javax.swing.JFrame {
             return;
         } else {
             dirdy = _dirp + "\\";
-
+            
         }
         if (autoName == true) {
             Fname = uniqFname();
@@ -652,7 +664,7 @@ public class M3U extends javax.swing.JFrame {
         } catch (IOException e) {
         }
     }
-
+    
     List<String> textFiles(String directory) {
         List<String> textFiles = new ArrayList<String>();
         File dir = new File(directory);
@@ -671,7 +683,7 @@ public class M3U extends javax.swing.JFrame {
         }
         return textFiles;
     }
-
+    
     public String uniqFname() {
         File f = null;
         try {
@@ -680,7 +692,7 @@ public class M3U extends javax.swing.JFrame {
         } catch (IOException ex) {
             return null;
         }
-
+        
         return f.getName();
     }
 }
