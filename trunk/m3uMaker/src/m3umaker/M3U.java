@@ -148,6 +148,7 @@ public class M3U extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 110, -1));
 
+        jTextField1.setEditable(false);
         jTextField1.setToolTipText("");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 260, -1));
 
@@ -385,12 +386,16 @@ public class M3U extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1PropertyChange
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        if (jCheckBox2.isSelected()) {
-            Only();
-        } else if (jCheckBox1.isSelected()) {
-            Mix();
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "select a media folder !");
+        } else {
+            if (jCheckBox2.isSelected()) {
+                Only();
+            } else if (jCheckBox1.isSelected()) {
+                Mix();
+            }
         }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
