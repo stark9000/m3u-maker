@@ -5,7 +5,6 @@
  */
 package m3umaker;
 
-import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -82,7 +81,6 @@ public class M3U extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -279,13 +277,6 @@ public class M3U extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("jButton7");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -297,23 +288,16 @@ public class M3U extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addContainerGap(251, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton7)
-                                .addGap(80, 80, 80))))))
+                        .addGap(0, 392, Short.MAX_VALUE)
+                        .addComponent(jButton6)
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(26, 26, 26)
-                .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
@@ -526,10 +510,6 @@ public class M3U extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        System.out.println("" + checkForExtensions(jfdir.getSelectedFile()));
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -573,7 +553,6 @@ public class M3U extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -616,6 +595,7 @@ public class M3U extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/img/0.png"));
         this.setIconImage(icon.getImage());
         fileExtensionFilter = new FileExtensionFilter();
+
     }
 
     private void Only() {
@@ -703,11 +683,13 @@ public class M3U extends javax.swing.JFrame {
                     textFiles.add(file.getName());
                 }
             } else if (fMix == true) {
-                if (file.getName().toLowerCase().endsWith(jComboBox1.getSelectedItem().toString())) {
-                    //(?i).*\\.(mp3|avi|flv)$
-                    //(?i).*\\.(txt|err|ok)$
-                    textFiles.add(file.getName());
+
+                for (Object ext : checkForExtensions(jfdir.getSelectedFile()).toArray()) {
+                    if (file.getName().toLowerCase().endsWith((String) ext)) {
+                        textFiles.add(file.getName());
+                    }
                 }
+
             }
         }
         return textFiles;
@@ -733,10 +715,12 @@ public class M3U extends javax.swing.JFrame {
             }
         } else {
             //NOTE: if you don't want the '.' in the extension you'll need to add a '+1' to the substring call
-            String extension = file.getName().substring(Math.max(file.getName().lastIndexOf('.'), 0));
+            String extension = file.getName().substring(Math.max(file.getName().lastIndexOf("."), 0));
             extensions.add(extension);
             fileExtensionFilter.addFilteredExtension(extension);
         }
+
         return extensions;
     }
+
 }
