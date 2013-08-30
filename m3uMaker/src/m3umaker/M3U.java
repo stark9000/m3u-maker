@@ -143,7 +143,7 @@ public class M3U extends javax.swing.JFrame {
         jTextField1.setToolTipText("");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 260, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ".mp3", ".avi" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ".mp3", ".wma", ".flac", ".aac", ".amr", ".m4a", ".m4r", ".ogg", ".wav", ".wavepack", ".wma", ".flac", ".aac", ".amr", ".m4a", ".m4r", ".ogg", ".wav", ".wavepack", ".avi", ".flv", ".mp4", ".wmv", ".3gp", ".rmvb", ".mkv", ".mpg", ".vob", ".mov" }));
         jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jComboBox1PropertyChange(evt);
