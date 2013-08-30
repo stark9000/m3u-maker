@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,7 +23,7 @@ import javax.swing.JOptionPane;
  * @author xyBerWise
  */
 public class M3U extends javax.swing.JFrame {
-    
+
     private JFileChooser jfdir;
     private JFileChooser _jfdir;
     private String dirp;
@@ -35,12 +37,13 @@ public class M3U extends javax.swing.JFrame {
     private String Fname = "";
     private String dirdy;
     private String m3ufps;
+    private FileExtensionFilter fileExtensionFilter;
 
     /**
      * Creates new form M3U
      */
     public M3U() {
-        
+
         initComponents();
         Cinit();
     }
@@ -79,6 +82,7 @@ public class M3U extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -275,25 +279,41 @@ public class M3U extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("jButton7");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(251, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButton6)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButton7)
+                                .addGap(80, 80, 80))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
@@ -302,6 +322,7 @@ public class M3U extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/4.png"))); // NOI18N
         jMenuItem1.setText("Make M3U");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,6 +331,7 @@ public class M3U extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/3.png"))); // NOI18N
         jMenuItem2.setText("Settings");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,6 +344,7 @@ public class M3U extends javax.swing.JFrame {
 
         jMenu2.setText("Help");
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/6.png"))); // NOI18N
         jMenuItem3.setText("About");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,24 +391,24 @@ public class M3U extends javax.swing.JFrame {
             jTextField1.setToolTipText("" + jTextField1.getText());
         } else {
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
     }//GEN-LAST:event_jCheckBox2ActionPerformed
-    
+
     private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
     }//GEN-LAST:event_jComboBox1PropertyChange
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         if (jCheckBox2.isSelected()) {
             Only();
         } else if (jCheckBox1.isSelected()) {
             Mix();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (jCheckBox1.isSelected()) {
             jCheckBox2.setEnabled(false);
@@ -397,7 +420,7 @@ public class M3U extends javax.swing.JFrame {
             fMix = false;
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
-    
+
     private void jCheckBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox2MouseClicked
         jCheckBox2.setEnabled(true);
         jCheckBox2.setSelected(true);
@@ -406,7 +429,7 @@ public class M3U extends javax.swing.JFrame {
             jComboBox1.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox2MouseClicked
-    
+
     private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
         jCheckBox1.setEnabled(true);
         jCheckBox1.setSelected(true);
@@ -415,11 +438,11 @@ public class M3U extends javax.swing.JFrame {
             jComboBox1.setEnabled(false);
         }
     }//GEN-LAST:event_jCheckBox1MouseClicked
-    
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         if (jCheckBox3.isSelected()) {
             m3urp = true;
@@ -427,7 +450,7 @@ public class M3U extends javax.swing.JFrame {
             m3urp = false;
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
-    
+
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         if (jCheckBox4.isSelected()) {
             autoName = true;
@@ -437,14 +460,14 @@ public class M3U extends javax.swing.JFrame {
             jTextField2.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (autoName == false) {
             jTextField2.setEnabled(true);
         }
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-    
+
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
         if (jCheckBox5.isSelected()) {
             jTextField3.setEnabled(false);
@@ -462,9 +485,9 @@ public class M3U extends javax.swing.JFrame {
             m3ufp = true;
         }
     }//GEN-LAST:event_jCheckBox5ActionPerformed
-    
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
+
         if (_jfdir.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             if (_jfdir.getSelectedFile() != null) {
                 _dirp = _jfdir.getSelectedFile().getAbsolutePath();
@@ -474,7 +497,7 @@ public class M3U extends javax.swing.JFrame {
         } else {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
-    
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if (jCheckBox2.isSelected()) {
             Only();
@@ -482,19 +505,19 @@ public class M3U extends javax.swing.JFrame {
             Mix();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-    
+
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-    
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-    
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton6ActionPerformed
-    
+
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
         if (jCheckBox6.isSelected()) {
             m3ufp = true;
@@ -502,6 +525,10 @@ public class M3U extends javax.swing.JFrame {
             m3ufp = false;
         }
     }//GEN-LAST:event_jCheckBox6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        System.out.println("" + checkForExtensions(jfdir.getSelectedFile()));
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -546,6 +573,7 @@ public class M3U extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -587,8 +615,9 @@ public class M3U extends javax.swing.JFrame {
         jCheckBox6.setEnabled(false);
         ImageIcon icon = new ImageIcon(this.getClass().getResource("/img/0.png"));
         this.setIconImage(icon.getImage());
+        fileExtensionFilter = new FileExtensionFilter();
     }
-    
+
     private void Only() {
         if (m3usd == true) {
             dirdy = dirp + "\\";
@@ -597,7 +626,7 @@ public class M3U extends javax.swing.JFrame {
             return;
         } else {
             dirdy = _dirp + "\\";
-            
+
         }
         if (autoName == true) {
             Fname = uniqFname();
@@ -611,12 +640,12 @@ public class M3U extends javax.swing.JFrame {
             m3ufps = jfdir.getSelectedFile().getCanonicalPath().toString() + "\\";
             BufferedWriter out = new BufferedWriter(new FileWriter(dirdy + Fname + ".m3u", m3urp));
             if (m3ufp == true) {
-                for (String item : textFiles(jfdir.getSelectedFile().toString())) {
+                for (String item : Files(jfdir.getSelectedFile().toString())) {
                     out.write(m3ufps + item);
                     out.newLine();
                 }
             } else if (m3ufp == false) {
-                for (String item : textFiles(jfdir.getSelectedFile().toString())) {
+                for (String item : Files(jfdir.getSelectedFile().toString())) {
                     out.write(item);
                     out.newLine();
                 }
@@ -626,7 +655,7 @@ public class M3U extends javax.swing.JFrame {
         } catch (IOException e) {
         }
     }
-    
+
     private void Mix() {
         if (m3usd == true) {
             dirdy = dirp + "\\";
@@ -635,7 +664,7 @@ public class M3U extends javax.swing.JFrame {
             return;
         } else {
             dirdy = _dirp + "\\";
-            
+
         }
         if (autoName == true) {
             Fname = uniqFname();
@@ -649,12 +678,12 @@ public class M3U extends javax.swing.JFrame {
             m3ufps = jfdir.getSelectedFile().getCanonicalPath().toString() + "\\";
             BufferedWriter out = new BufferedWriter(new FileWriter(dirdy + Fname + ".m3u", m3urp));
             if (m3ufp == true) {
-                for (String item : textFiles(jfdir.getSelectedFile().toString())) {
+                for (String item : Files(jfdir.getSelectedFile().toString())) {
                     out.write(m3ufps + item);
                     out.newLine();
                 }
             } else {
-                for (String item : textFiles(jfdir.getSelectedFile().toString())) {
+                for (String item : Files(jfdir.getSelectedFile().toString())) {
                     out.write(item);
                     out.newLine();
                 }
@@ -664,17 +693,17 @@ public class M3U extends javax.swing.JFrame {
         } catch (IOException e) {
         }
     }
-    
-    List<String> textFiles(String directory) {
+
+    List<String> Files(String directory) {
         List<String> textFiles = new ArrayList<String>();
         File dir = new File(directory);
         for (File file : dir.listFiles()) {
             if (fMix == false) {
-                if (file.getName().endsWith((jComboBox1.getSelectedItem().toString()))) {
+                if (file.getName().toLowerCase().endsWith((jComboBox1.getSelectedItem().toString()))) {
                     textFiles.add(file.getName());
                 }
             } else if (fMix == true) {
-                if (file.getName().endsWith(jComboBox1.getSelectedItem().toString())) {
+                if (file.getName().toLowerCase().endsWith(jComboBox1.getSelectedItem().toString())) {
                     //(?i).*\\.(mp3|avi|flv)$
                     //(?i).*\\.(txt|err|ok)$
                     textFiles.add(file.getName());
@@ -683,7 +712,7 @@ public class M3U extends javax.swing.JFrame {
         }
         return textFiles;
     }
-    
+
     public String uniqFname() {
         File f = null;
         try {
@@ -692,7 +721,22 @@ public class M3U extends javax.swing.JFrame {
         } catch (IOException ex) {
             return null;
         }
-        
+
         return f.getName();
+    }
+
+    public Set<String> checkForExtensions(File file) {
+        Set<String> extensions = new HashSet<String>();
+        if (file.isDirectory()) {
+            for (File f : file.listFiles(fileExtensionFilter)) {
+                extensions.addAll(checkForExtensions(f));
+            }
+        } else {
+            //NOTE: if you don't want the '.' in the extension you'll need to add a '+1' to the substring call
+            String extension = file.getName().substring(Math.max(file.getName().lastIndexOf('.'), 0));
+            extensions.add(extension);
+            fileExtensionFilter.addFilteredExtension(extension);
+        }
+        return extensions;
     }
 }
