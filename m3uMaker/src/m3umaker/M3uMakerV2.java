@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author xyBerWise
  */
 public class M3uMakerV2 extends javax.swing.JFrame {
-    
+
     private TrayIcon trayIcon;
     private SystemTray tray;
     private Dimension oldDimensions;
@@ -56,7 +56,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         initComponents();
         Cinit();
     }
-    
+
     public final void Cinit() {
         cm = new ComponentMover(this, jLabel1);
         oldDimensions = new Dimension();
@@ -72,43 +72,43 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         jCheckBox3.setSelected(true);
         jTextField2.setEnabled(false);
         jTextField3.setEnabled(false);
-        
+
     }
-    
+
     public final void setSahpe() {
         try {
             Shape shape = (Shape) new RoundRectangle2D.Float(0, 0, this.getWidth(), this.getHeight(), 5, 5);
             AWTUtilities.setWindowShape(this, shape);
-            
+
         } catch (Exception e) {
             shapeR = false;
         }
     }
-    
+
     public void toTray() {
         if (SystemTray.isSupported()) {
             oldDimensions = this.getSize();
             newDimensions = new Dimension(0, 0);
             try {
                 tray = SystemTray.getSystemTray();
-                
+
                 ActionListener exitListener = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        
+
                         fromTray();
                         tray.remove(trayIcon);
                     }
                 };
-                
+
                 PopupMenu popup = new PopupMenu();
                 popup.setFont(new Font(this.getFont().getName(), Font.PLAIN, 11));
                 MenuItem defaultItem = new MenuItem("Show");
-                
+
                 defaultItem.addActionListener(exitListener);
                 popup.add(defaultItem);
                 defaultItem = new MenuItem("Exit");
-                
+
                 defaultItem.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -142,12 +142,12 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             System.out.println("dsdsrfff");
         }
     }
-    
+
     public void fromTray() {
         this.setSize(oldDimensions);
         this.setVisible(true);
     }
-    
+
     public String uniqFname() {
         File f = null;
         try {
@@ -157,7 +157,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             ex.printStackTrace();
             return null;
         }
-        
+
         return f.getName();
     }
 
@@ -428,7 +428,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         toTray();
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (tray != null) {
             tray.remove(trayIcon);
@@ -436,12 +436,12 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         } else {
             System.exit(0);
         }
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jfdir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        
+
         if (jfdir.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             if (jfdir.getSelectedFile() != null) {
                 jfdir.getSelectedFile().setReadOnly();
@@ -452,18 +452,18 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         } else {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+
         if (jTextField1.getText().toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "selec Folder !");
+            JOptionPane.showMessageDialog(null, "Please Select a Folder !");
             return;
         }
         if (autoName == true) {
             Fname = uniqFname();
             // System.out.println(""+Fname);
         } else if ("".equals(jTextField2.getText())) {
-            JOptionPane.showMessageDialog(this, "type a name !");
+            JOptionPane.showMessageDialog(this, "Type a Name for .m3u File !");
             return;
         } else {
             Fname = jTextField2.getText();
@@ -478,7 +478,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             }
         } else {
             if ("".equals(jTextField3.getText())) {
-                JOptionPane.showMessageDialog(null, "save m3u in diff ,select folder !");
+                JOptionPane.showMessageDialog(null, "Save .m3u in Different Folder  : Please Select a Folder !");
             }
             if (Only == true) {
                 String[] ext = new String[1];
@@ -496,11 +496,11 @@ public class M3uMakerV2 extends javax.swing.JFrame {
 //            exf.genFile(Fname, exf.getFiles(dirp));
 //        }
     }//GEN-LAST:event_jButton6ActionPerformed
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (sdIr == false && jTextField3.getText().toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "select folder !");
@@ -508,7 +508,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         }
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton8ActionPerformed
-    
+
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         if (jCheckBox2.isSelected()) {
             autoName = true;
@@ -518,10 +518,10 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             jTextField2.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
-    
+
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         _jfdir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        
+
         if (_jfdir.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             if (_jfdir.getSelectedFile() != null) {
                 _jfdir.getSelectedFile().setReadOnly();
@@ -532,7 +532,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         } else {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
-    
+
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (jCheckBox1.isSelected()) {
             jComboBox1.setEnabled(false);
@@ -542,14 +542,14 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             Only = true;
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
-    
+
     private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
         if (!jComboBox1.isEnabled() || jCheckBox1.isSelected()) {
             jCheckBox1.setSelected(false);
             jComboBox1.setEnabled(true);
         }
     }//GEN-LAST:event_jComboBox1MouseClicked
-    
+
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         if (jCheckBox3.isSelected()) {
             sdIr = true;
@@ -559,7 +559,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             jTextField3.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
-    
+
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         if (jCheckBox4.isSelected()) {
             sdIr = false;
@@ -569,7 +569,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             jTextField3.setEnabled(false);
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
-    
+
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         try {
             URI gpuri = new URI("https://plus.google.com/u/0/101874849145221011001?tab=wX");
@@ -577,7 +577,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton11ActionPerformed
-    
+
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         try {
             URI yturi = new URI("http://www.youtube.com/channel/UCAnq1Qo9FXfNEVAG3L4EUgw");
@@ -585,7 +585,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton12ActionPerformed
-    
+
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         try {
             URI fburi = new URI("https://www.facebook.com/stark9000");
@@ -593,7 +593,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton13ActionPerformed
-    
+
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton10ActionPerformed
