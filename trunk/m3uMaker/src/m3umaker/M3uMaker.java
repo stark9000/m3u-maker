@@ -5,9 +5,9 @@
  */
 package m3umaker;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
+import org.jvnet.substance.skin.SubstanceRavenGraphiteLookAndFeel;
 
 /**
  *
@@ -20,11 +20,13 @@ public class M3uMaker {
      */
     public static void main(String[] args) {
         try {
-            LookAndFeel lf = new WindowsLookAndFeel();
+            LookAndFeel lf = new SubstanceRavenGraphiteLookAndFeel();
+            //new WindowsLookAndFeel();
             UIManager.setLookAndFeel(lf);
         } catch (Exception e) {
         }
-        new M3U().setVisible(true);
+        //  new M3U().setVisible(true);
+        new M3uMakerV2().setVisible(true);
     }
-    
+
 }
