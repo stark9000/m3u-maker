@@ -22,6 +22,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -48,6 +49,7 @@ public class M3uMakerV2 extends javax.swing.JFrame {
     private boolean Only = true;
     private String Fname;
     private boolean sdIr = true;
+    public static List<File> files0 = null;
 
     /**
      * Creates new form M3uMakerV2
@@ -306,6 +308,11 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         jButton9.setForeground(new java.awt.Color(102, 153, 255));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_12.png"))); // NOI18N
         jButton9.setText("Files");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jTabbedPane1.addTab("M3U", new javax.swing.ImageIcon(getClass().getResource("/img/_0.png")), jPanel2); // NOI18N
@@ -369,13 +376,14 @@ public class M3uMakerV2 extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton10.setForeground(new java.awt.Color(102, 153, 255));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_14.png"))); // NOI18N
         jButton10.setText("cool !");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
+        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_j.png"))); // NOI18N
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
@@ -472,7 +480,8 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             if (Only == true) {
                 String[] ext = new String[1];
                 ext[0] = jComboBox1.getSelectedItem().toString();
-                exf.genFile(Fname, exf.getFiles(dirp, ext));
+                files0 = exf.getFiles(dirp, ext);
+                exf.genFile(Fname, files0);
             } else if (Only == false) {
                 exf.genFile(Fname, exf.getFiles(dirp));
             }
@@ -483,11 +492,14 @@ public class M3uMakerV2 extends javax.swing.JFrame {
             if (Only == true) {
                 String[] ext = new String[1];
                 ext[0] = jComboBox1.getSelectedItem().toString();
-                exf.genFile(jTextField3.getText().toString(), Fname, exf.getFiles(dirp, ext));
+                files0 = exf.getFiles(dirp, ext);
+                exf.genFile(jTextField3.getText().toString(), Fname, files0);
             } else if (Only == false) {
-                exf.genFile(jTextField3.getText().toString(), Fname, exf.getFiles(dirp));
+                files0 = exf.getFiles(dirp);
+                exf.genFile(jTextField3.getText().toString(), Fname, files0);
             }
         }
+
 //        if (Only == true) {
 //            String[] ext = new String[1];
 //            ext[0] = jComboBox1.getSelectedItem().toString();
@@ -597,6 +609,36 @@ public class M3uMakerV2 extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+
+        if (jTextField1.getText().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Select a Folder !");
+            return;
+        }
+
+        if (Only == true) {
+            String[] ext = new String[1];
+            ext[0] = jComboBox1.getSelectedItem().toString();
+            files0 = exf.getFiles(dirp, ext);
+        } else if (Only == false) {
+            files0 = exf.getFiles(dirp);
+        }
+
+        if (Only == true) {
+            String[] ext = new String[1];
+            ext[0] = jComboBox1.getSelectedItem().toString();
+            files0 = exf.getFiles(dirp, ext);
+        } else if (Only == false) {
+            files0 = exf.getFiles(dirp);
+        }
+
+        if (files0 == null || files0.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Files to List !");
+            return;
+        }
+        new fileList(this, true).setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
     public static void openWebpage(URI uri) {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {

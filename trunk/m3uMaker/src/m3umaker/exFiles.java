@@ -21,16 +21,16 @@ public class exFiles {
     public String mDIR;
 
     public List getFiles(String Mdir) {
-        List<File> files = null;
+        List<File> files0 = null;
         try {
             File dir = new File(Mdir);
             mDIR = dir.getCanonicalPath();
             String[] extensions = new String[]{"mp3", "wma", "flac", "aac", "amr", "m4a", "m4r", "ogg", "wav", "wavepack", "wma", "flac", "aac", "amr", "m4a", "m4r", "ogg", "wav", "wavepack", "avi", "flv", "mp4", "wmv", "3gp", "rmvb", "mkv", "mpg", "vob", "mov"};
-            files = (List<File>) FileUtils.listFiles(dir, extensions, true);
+            files0 = (List<File>) FileUtils.listFiles(dir, extensions, true);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return files;
+        return files0;
     }
 
     public List getFiles(String Mdir, String[] extensions) {
