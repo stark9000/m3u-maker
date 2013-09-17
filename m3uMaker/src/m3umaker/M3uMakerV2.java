@@ -134,14 +134,14 @@ public class M3uMakerV2 extends javax.swing.JFrame {
                     }
                 });
             } catch (Exception e) {
-                System.out.println("" + e);
+               // System.out.println("" + e);
                 JOptionPane.showMessageDialog(null, "error");
                 System.exit(0);
             }
             this.setSize(newDimensions);
             this.setVisible(false);
         } else {
-            System.out.println("dsdsrfff");
+            //System.out.println("dsdsrfff");
         }
     }
 

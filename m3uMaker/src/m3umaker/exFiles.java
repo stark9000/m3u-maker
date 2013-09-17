@@ -48,7 +48,7 @@ public class exFiles {
     public void genFile(String M3UfileName, List Files) {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(mDIR + "\\" + M3UfileName + ".m3u", true));
-            System.out.println("----" + mDIR + M3UfileName);
+            // System.out.println("----" + mDIR + M3UfileName);
             for (int i = 0; i < Files.size(); i++) {
                 out.write(Files.get(i).toString());
                 out.newLine();
